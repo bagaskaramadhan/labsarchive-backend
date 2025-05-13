@@ -8,11 +8,12 @@ const controller = {
             await service.createUser(data);
             res
             .status(statusMessage.statusCode.created)
+            .json(statusMessage.success(data))
         } catch (err: any) {
             console.log(err)
             res
             .status(statusMessage.statusCode.error)
-            .json(err.message)
+            .json({errorMessage: `${err.message}`})
         }
     }
 }
