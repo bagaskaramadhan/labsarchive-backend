@@ -1,20 +1,18 @@
 import { DataSourceOptions } from 'typeorm';
 import dotenv from 'dotenv';
+import serviceENV from './service';
 
 dotenv.config();
 
 const config: DataSourceOptions = {
   type: 'postgres',
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT) || 5432,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: serviceENV.DB_HOST,
+  port: Number(serviceENV.DB_PORT) || 5432,
+  username: serviceENV.DB_USER,
+  password: serviceENV.DB_PASSWORD,
+  database: serviceENV.DB_NAME,
   synchronize: false,
-  logging: false,
-  entities: [__dirname + '/src/entities/*.ts'],
-  migrations: [__dirname + '/src/migrations/*.ts'],
-  subscribers: [__dirname + '/src/subscribers/*.ts'],
+  logging: false
 };
 
 export default config;

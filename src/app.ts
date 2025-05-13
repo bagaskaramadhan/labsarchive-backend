@@ -4,11 +4,12 @@ import dotenv from "dotenv";
 import { DataSource } from "typeorm";
 import config from "./config/db";
 import routes from "./routes";
+import serviceENV from './config/service';
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = serviceENV.PORT;
 
 app.use(express.json());
 
